@@ -25,11 +25,10 @@ module.exports.run = async function ({ api, event, args }) {
         const response = await axios.get(apiUrl);
         const { airesponse, image_url } = response.data;
 
-        if (airesponse && airesponse.reply) {
-            api.sendMessage(`${airesponse.reply}`, event.threadID);
+        if (airesponse) {
+            api.sendMessage(`${airesponse}`, event.threadID);
 
             if (image_url) {
-                // Save the image locally
                 const imagePath = './image.jpg';
                 const imageResponse = await axios.get(image_url, { responseType: 'arraybuffer' });
                 fs.writeFileSync(imagePath, Buffer.from(imageResponse.data));
