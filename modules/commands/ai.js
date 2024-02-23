@@ -1,5 +1,5 @@
 const axios = require('axios');
-const fs = require('fs').promises; // Added this line to include fs module
+const fs = require('fs').promises;
 
 const storageFile = 'user_data.json';
 const chatRecordFile = 'chat_records.json';
@@ -17,34 +17,34 @@ module.exports.config = {
 };
 
 module.exports.run = async function ({ api, event, args }) {
-    const prompt = encodeURIComponent(args.join(" "));
+    const content = encodeURIComponent(args.join(" "));
     const uid = event.senderID;
-    const apiUrl = `https://aiapiviafastapiwithimagebyjonellmagallanes.replit.app/ai?content=${prompt}`;
+    const apiUrl = `https://nekohime.xyz/api/ai/openai?text=${content}`;
 
-    if (!prompt) return api.sendMessage("Please provide your question.\n\nExample: ai what is the solar system?", event.threadID, event.messageID);
+    if (!content) return api.sendMessage("Please provide your question.\n\nExample: ai what is the solar system?", event.threadID, event.messageID);
 
     try {
         api.sendMessage("🔍 | AI is searching for your answer. Please wait...", event.threadID, event.messageID);
 
         const response = await axios.get(apiUrl);
-        const { airesponse } = response.data;
+        const { result } = response.data;
 
         // Update user data
         const userData = await getUserData(uid);
         userData.requestCount = (userData.requestCount || 0) + 1;
         userData.responses = userData.responses || [];
-        userData.responses.push({ question: prompt, response: airesponse });
+        userData.responses.push({ question: content, response: result });
         await saveUserData(uid, userData);
 
         // Record chat
-        recordChat(uid, prompt);
+        recordChat(uid, content);
 
         // Get total request count and list of users who asked questions
         const totalRequestCount = await getTotalRequestCount();
         const userNames = await getUserNames(api, uid);
 
         // Generate response
-        const responseMessage = `${airesponse}\n\n📝 Request Count: ${totalRequestCount}\n👤 Asked Questions by: ${userNames.join(', ')}`;
+        const responseMessage = `${result}\n\n📝 Request Count: ${totalRequestCount}\n👤 Asked Questions by: ${userNames.join(', ')}`;
         api.sendMessage(responseMessage, event.threadID, event.messageID);
     } catch (error) {
         console.error(error);
