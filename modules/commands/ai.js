@@ -19,7 +19,7 @@ module.exports.config = {
 module.exports.run = async function ({ api, event, args }) {
     const content = encodeURIComponent(args.join(" "));
     const uid = event.senderID;
-    const apiUrl = `https://nekohime.xyz/api/ai/openai?text=${content}`;
+    const apiUrl = `https://cc-project-apis-jonell-magallanes.onrender.com/api/globalgpt?content=${content}`; // Updated API URL
 
     if (!content) return api.sendMessage("Please provide your question.\n\nExample: ai what is the solar system?", event.threadID, event.messageID);
 
@@ -27,7 +27,7 @@ module.exports.run = async function ({ api, event, args }) {
         api.sendMessage("🔍 | AI is searching for your answer. Please wait...", event.threadID, event.messageID);
 
         const response = await axios.get(apiUrl);
-        const { result } = response.data;
+        const { content: result, requestCount } = response.data; // Updated response structure
 
         // Update user data
         const userData = await getUserData(uid);
@@ -44,7 +44,7 @@ module.exports.run = async function ({ api, event, args }) {
         const userNames = await getUserNames(api, uid);
 
         // Generate response
-        const responseMessage = `${result}\n\n📝 Request Count: ${totalRequestCount}\n👤 Asked Questions by: ${userNames.join(', ')}`;
+        const responseMessage = `${result}\n\n📝 Request Count: ${requestCount}\n👤 Question Asked by: ${userNames.join(', ')}`;
         api.sendMessage(responseMessage, event.threadID, event.messageID);
     } catch (error) {
         console.error(error);
