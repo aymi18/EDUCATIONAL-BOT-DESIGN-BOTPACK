@@ -3,6 +3,9 @@
   "version": "1.5.1",
   "description": "A Simple BotPack for starting a Messenger chatbot.",
   "main": "index.js",
+  "script": {
+    "start": "node index",
+  },
   "keywords": [
     "Facebook",
     "Messenger",
