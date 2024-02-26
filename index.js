@@ -1,3 +1,4 @@
+
 //* Don't change this code if not destroy your files and don't steal it the code (by jonell Magallanes Project CC))
 const express = require('express');
 const fs = require('fs');
@@ -131,6 +132,7 @@ app.get('/dashboard', async (req, res) => {
   });
 });
 
+        
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'harold.html')));
 
 
@@ -149,7 +151,7 @@ io.on('connection', (socket) => {
 });
 
 function startBot() {
-  const child = spawn("node", ["--trace-warnings", "--async-stack-traces", "main.js"], {
+  const child = spawn("node", ["--trace-warnings", "--async-stack-traces", main.js"], {
       cwd: __dirname,
       stdio: "inherit",
       shell: true
@@ -169,7 +171,7 @@ function startBot() {
 
 startBot(); 
 
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 5000;
 httpServer.listen(port, () => {
   console.log(`Server with real-time updates running on http://localhost:${port}`);
 });
