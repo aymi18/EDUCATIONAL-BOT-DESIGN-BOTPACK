@@ -17,7 +17,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
     const moment = require("moment-timezone");
     var gio = moment.tz("Asia/Manila").format("HH:mm:ss || D/MM/YYYY");
     var msg = {
-        body: `My Current Prefix » ${global.config.PREFIX} \n Type ${global.config.PREFIX}help to see all commands.`
+        body: `﹝👾﹞ 𝘁𝗵𝗶𝘀 𝗶𝘀 𝗺𝘆 𝗽𝗿𝗲𝗳𝗶𝘅 » ${global.config.PREFIX} \n Type ${global.config.PREFIX}𝗵𝗲𝗹𝗽 𝘁𝗼 𝘀𝗲𝗲 𝗮𝗹𝗹 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀..`
       }
       api.sendMessage(msg, threadID, messageID);
     }
