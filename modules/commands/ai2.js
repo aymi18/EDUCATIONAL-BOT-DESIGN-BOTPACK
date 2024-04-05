@@ -2,7 +2,7 @@ const axios = require('axios');
 const fs = require('fs');
 
 module.exports.config = {
-    name: "ai2",
+    name: "yelai",
     version: "1.0.0",
     hasPermssion: 0,
     credits: "Jonell Magallanes",
@@ -20,7 +20,7 @@ module.exports.run = async function ({ api, event, args }) {
     if (!content) return api.sendMessage("Please provide your question.\n\nExample: ai what is the solar system?", event.threadID, event.messageID);
 
     try {
-        api.sendMessage("🔍 | AI is searching for your answer. Please wait...", event.threadID, event.messageID);
+        api.sendMessage("🔍 | sandali lang beh hanap ako sagot...", event.threadID, event.messageID);
 
         const response = await axios.get(apiUrl);
         const { airesponse, image_url } = response.data;
@@ -42,6 +42,6 @@ module.exports.run = async function ({ api, event, args }) {
         }
     } catch (error) {
         console.error(error);
-        api.sendMessage("An error occurred while processing your request.", event.threadID);
+        api.sendMessage("di ko mahanap beh 😭, nag eerror 😭", event.threadID);
     }
 };
