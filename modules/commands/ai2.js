@@ -10,7 +10,7 @@ module.exports.config = {
     usePrefix: false,
     commandCategory: "other",
     usages: "[question]",
-    cooldowns: 10
+    cooldowns: 1
 };
 
 module.exports.run = async function ({ api, event, args }) {
