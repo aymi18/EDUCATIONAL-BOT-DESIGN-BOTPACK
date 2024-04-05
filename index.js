@@ -1,11 +1,11 @@
 
 //* Don't change this code if not destroy your files and don't steal it the code (by jonell Magallanes Project CC))
+const axios = require('axios');
 const express = require('express');
 const fs = require('fs');
 const { spawn } = require("child_process");
 const chalk = require('chalk');
 const path = require('path');
-const axios = require("axios");
 const app = express();
 const PingMonitor = require('ping-monitor');
 const pingOptions = {
