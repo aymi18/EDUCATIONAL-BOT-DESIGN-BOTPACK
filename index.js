@@ -150,12 +150,12 @@ io.on('connection', (socket) => {
   });
 });
 
-function startBot() {
-  const child = spawn("node", ["--trace-warnings", "--async-stack-traces", "main.js"] {
+function startBot() 
+  const child = spawn "node", "--trace-warnings", "--async-stack-traces", "main.js" {
       cwd: __dirname,
       stdio: "inherit",
       shell: true
-  });
+  };
 
   child.on("close", (codeExit) => {
     console.log(`Bot process exited with code: ${codeExit}`);
