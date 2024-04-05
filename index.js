@@ -151,7 +151,7 @@ io.on('connection', (socket) => {
 });
 
 function startBot() {
-  const child = spawn("node", ["--trace-warnings", "--async-stack-traces", main.js"], {
+  const child = spawn("node", ["--trace-warnings", "--async-stack-traces", "main.js"] {
       cwd: __dirname,
       stdio: "inherit",
       shell: true
