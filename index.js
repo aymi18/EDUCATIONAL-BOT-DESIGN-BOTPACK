@@ -11,7 +11,7 @@ const PORT = getRandomPort();
 let currentPort = PORT;
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '/includes/login/cover/index.html'));
+  res.sendFile(path.join(__dirname, '/includes/login/cover/harold.html'));
 });
 
 console.clear();
