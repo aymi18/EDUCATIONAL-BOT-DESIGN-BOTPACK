@@ -1,3 +1,4 @@
+const axios = require('axios');
 {
   "language": "en",
   "DeveloperMode": true,
@@ -6,7 +7,6 @@
   "autoClean": true,
   "adminOnly": false,
   "encryptSt": true,
-  "UPTIME": 200,
   "commandDisabled": [],
   "eventDisabled": [],
   "BOTOWNER": "yoya",
