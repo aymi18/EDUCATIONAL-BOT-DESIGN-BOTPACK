@@ -1,4 +1,4 @@
-const axios = require('axios');
+
 {
   "language": "en",
   "DeveloperMode": true,
