@@ -21,7 +21,7 @@ module.exports.run = async function ({ api, event, args }) {
     const uid = event.senderID;
     const apiUrl = `https://cc-project-apis-jonell-magallanes.onrender.com/api/globalgpt?content=${content}`; // Updated API URL
 
-    if (!content) return api.sendMessage("Please provide your question.\n\nExample: ai what is the solar system?", event.threadID, event.messageID);
+    if (!content) return api.sendMessage("Ano bang itatanong mo?.\n\nMag tanong ka sis para naman mahanapan ko ng sagot, event.threadID, event.messageID);
 
     try {
         api.sendMessage("🔍 | Wait hanapan kita sagot...", event.threadID, event.messageID);
